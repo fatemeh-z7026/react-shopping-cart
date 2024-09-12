@@ -1,0 +1,8 @@
+
+.pro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem;
+    gap: 2rem;
+  }
