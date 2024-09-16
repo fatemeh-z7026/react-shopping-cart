@@ -3,7 +3,6 @@ import "./CartProducts.css";
 import React, { Component } from "react";
 
 export default class CartProducts extends Component {
- 
   render() {
     return (
       <div className="cart-container">
@@ -16,14 +15,20 @@ export default class CartProducts extends Component {
               <span className="item-price">{item.count}</span>
               <button
                 className="remove-item"
-                onClick={()=>this.props.removeCartItem(item.id)}
+                onClick={() => this.props.removeCartItem(item.id)}
               >
                 Remove
               </button>
             </li>
           ))}
         </ul>
-        <button className="remove-all" onClick={this.props.removeAllCartItem}>Remove All Products</button>
+        <div>
+        <h2>Total Price: ${this.props.calculateTotalPrice()}</h2>
+
+          <button className="remove-all" onClick={this.props.removeAllCartItem}>
+            Remove All Products
+          </button>
+        </div>
       </div>
     );
   }

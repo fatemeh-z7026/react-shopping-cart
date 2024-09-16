@@ -60,6 +60,7 @@ export default class Shop extends Component {
     this.addProductHandler = this.addProductHandler.bind(this);
     this.removeProductHandler = this.removeProductHandler.bind(this);
     this.removeAllProductHandler = this.removeAllProductHandler.bind(this);
+    this.calculateTotalPrice = this.calculateTotalPrice.bind(this);
   }
 
   addProductHandler(proId) {
@@ -94,6 +95,12 @@ export default class Shop extends Component {
       shoppingCart: [],
     });
   }
+
+  calculateTotalPrice() {
+    let totalPrice = 0;
+    this.state.shoppingCart.forEach((p) => (totalPrice += p.price * p.count));
+   return totalPrice;
+  }
   render() {
     return (
       <>
@@ -113,6 +120,7 @@ export default class Shop extends Component {
           {" "}
           <CartProducts
             addCartItem={this.state.shoppingCart}
+            calculateTotalPrice={this.calculateTotalPrice}
             removeCartItem={this.removeProductHandler}
             removeAllCartItem={this.removeAllProductHandler}
           />
