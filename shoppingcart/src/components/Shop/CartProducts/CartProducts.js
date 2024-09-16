@@ -13,6 +13,7 @@ export default class CartProducts extends Component {
             <li key={item.id} className="cart-item">
               <span className="item-name">{item.title}</span>
               <span className="item-price">${item.price}</span>
+              <span className="item-price">{item.count}</span>
               <button
                 className="remove-item"
                 onClick={()=>this.props.removeCartItem(item.id)}
