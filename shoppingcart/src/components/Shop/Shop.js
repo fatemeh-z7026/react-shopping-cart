@@ -19,11 +19,19 @@ export default class Shop extends Component {
         { id: 6, title: "Album 6", price: 50, img: "Image/Album 6.Jpg" },
       ],
 
-      shoppingCart:[]
+      shoppingCart: [],
     };
+    this.addProductHandler = this.addProductHandler.bind(this);
   }
 
-
+  addProductHandler(proId) {
+    let selectedProduct = this.state.products.find((pro) => pro.id === proId);
+    if (selectedProduct) {
+      this.setState((prevState) => ({
+        shoppingCart: [...prevState.shoppingCart, selectedProduct],
+      }));
+    }
+  }
   render() {
     return (
       <>
@@ -32,12 +40,16 @@ export default class Shop extends Component {
         </div>
         <div className="pro-container">
           {this.state.products.map((product) => (
-            <Products key={product.id} {...product}  />
+            <Products
+              key={product.id}
+              {...product}
+              addPro={this.addProductHandler}
+            />
           ))}
         </div>
         <div>
           {" "}
-          <CartProducts />
+          <CartProducts addCartItem={this.state.shoppingCart} />
         </div>
         <div>
           {" "}
