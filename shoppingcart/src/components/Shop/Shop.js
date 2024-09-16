@@ -23,6 +23,7 @@ export default class Shop extends Component {
     };
     this.addProductHandler = this.addProductHandler.bind(this);
     this.removeProductHandler = this.removeProductHandler.bind(this);
+    this.removeAllProductHandler = this.removeAllProductHandler.bind(this);
   }
 
   addProductHandler(proId) {
@@ -42,6 +43,11 @@ export default class Shop extends Component {
         shoppingCart: remainingProducts
       }));
     
+  }
+  removeAllProductHandler() {
+    this.setState({
+      shoppingCart: [],
+    })
   }
   render() {
     return (
@@ -63,6 +69,7 @@ export default class Shop extends Component {
           <CartProducts
             addCartItem={this.state.shoppingCart}
             removeCartItem={this.removeProductHandler}
+            removeAllCartItem={this.removeAllProductHandler}
           />
         </div>
         <div>

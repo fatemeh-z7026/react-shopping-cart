@@ -3,9 +3,7 @@ import "./CartProducts.css";
 import React, { Component } from "react";
 
 export default class CartProducts extends Component {
-  removePro(id) {
-    this.props.removeCartItem(id);
-  }
+ 
   render() {
     return (
       <div className="cart-container">
@@ -17,14 +15,14 @@ export default class CartProducts extends Component {
               <span className="item-price">${item.price}</span>
               <button
                 className="remove-item"
-                onClick={()=>this.removePro(item.id)}
+                onClick={()=>this.props.removeCartItem(item.id)}
               >
                 Remove
               </button>
             </li>
           ))}
         </ul>
-        <button className="remove-all">Remove All Products</button>
+        <button className="remove-all" onClick={this.props.removeAllCartItem}>Remove All Products</button>
       </div>
     );
   }
